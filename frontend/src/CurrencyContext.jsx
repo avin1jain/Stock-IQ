@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 
+const BACKEND = "https://stockiq-backend-0mh0.onrender.com";
 const CurrencyContext = createContext();
 
 export function CurrencyProvider({ children }) {
@@ -8,7 +9,7 @@ export function CurrencyProvider({ children }) {
   const [rates, setRates] = useState({ usd_to_inr: 83.50, inr_to_usd: 0.011976 });
 
   useEffect(() => {
-    axios.get("http://localhost:8000/api/currency/rates")
+    axios.get(BACKEND + "/api/currency/rates")
       .then(r => setRates(r.data))
       .catch(() => {});
   }, []);
@@ -16,13 +17,11 @@ export function CurrencyProvider({ children }) {
   function convert(amount, isIndianStock) {
     if (!amount) return 0;
     if (currency === "INR") {
-      // Show everything in INR
-      if (isIndianStock) return amount; // already in INR
-      return amount * rates.usd_to_inr; // convert USD to INR
+      if (isIndianStock) return amount;
+      return amount * rates.usd_to_inr;
     } else {
-      // Show everything in USD
-      if (!isIndianStock) return amount; // already in USD
-      return amount * rates.inr_to_usd; // convert INR to USD
+      if (!isIndianStock) return amount;
+      return amount * rates.inr_to_usd;
     }
   }
 

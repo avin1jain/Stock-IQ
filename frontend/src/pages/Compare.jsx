@@ -24,7 +24,7 @@ export default function Compare() {
 
   async function resolveSymbol(input) {
     try {
-      const res = await axios.get("http://localhost:8000/api/search/" + input.trim());
+      const res = await axios.get("https://stockiq-backend-0mh0.onrender.com/api/search/" + input.trim());
       return res.data.symbol;
     } catch {
       return input.trim().toUpperCase();
@@ -42,10 +42,10 @@ export default function Compare() {
       setSym1(resolved1);
       setSym2(resolved2);
       const [s1, s2, f1, f2] = await Promise.all([
-        axios.get("http://localhost:8000/api/stocks/" + resolved1),
-        axios.get("http://localhost:8000/api/stocks/" + resolved2),
-        axios.get("http://localhost:8000/api/financials/" + resolved1),
-        axios.get("http://localhost:8000/api/financials/" + resolved2),
+        axios.get("https://stockiq-backend-0mh0.onrender.com/api/stocks/" + resolved1),
+        axios.get("https://stockiq-backend-0mh0.onrender.com/api/stocks/" + resolved2),
+        axios.get("https://stockiq-backend-0mh0.onrender.com/api/financials/" + resolved1),
+        axios.get("https://stockiq-backend-0mh0.onrender.com/api/financials/" + resolved2),
       ]);
       setData({
         c1: { ...s1.data, ...f1.data },

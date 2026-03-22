@@ -14,7 +14,7 @@ export default function Navbar() {
     if (!query.trim()) return;
     setSearching(true);
     try {
-      const res = await axios.get("http://localhost:8000/api/search/" + query.trim());
+      const res = await axios.get("https://stockiq-backend-0mh0.onrender.com/api/search/" + query.trim());
       navigate("/stock/" + res.data.symbol);
       setQuery("");
     } catch {

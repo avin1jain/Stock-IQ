@@ -50,7 +50,7 @@ export default function StockDetail() {
     getNews(symbol).then(r => setNews(r.data.articles)).catch(() => setNews([]));
     getPrediction(symbol).then(r => setPredict(r.data)).catch(() => setPredict(null));
     getInsights(symbol).then(r => setInsights(r.data.insights)).catch(() => setInsights([]));
-    axios.get("http://localhost:8000/api/competitors/" + symbol)
+    axios.get("https://stockiq-backend-0mh0.onrender.com/api/competitors/" + symbol)
       .then(r => setCompetitors(r.data.competitors)).catch(() => setCompetitors([]));
 
     setLoading(false);
@@ -59,7 +59,7 @@ export default function StockDetail() {
   async function loadSuggestion() {
     setSuggLoading(true);
     try {
-      const res = await axios.get("http://localhost:8000/api/suggestion/" + symbol);
+      const res = await axios.get("https://stockiq-backend-0mh0.onrender.com/api/suggestion/" + symbol);
       setSuggestion(res.data);
     } catch {}
     setSuggLoading(false);

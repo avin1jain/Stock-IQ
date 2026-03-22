@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const api = axios.create({ baseURL: "http://localhost:8000/api" });
+const BACKEND = "https://stockiq-backend-0mh0.onrender.com";
+
+const api = axios.create({ baseURL: BACKEND + "/api" });
 
 export const getStock      = (s)    => api.get(`/stocks/${s}`);
 export const getHistory    = (s, p) => api.get(`/stocks/${s}/history?period=${p}`);

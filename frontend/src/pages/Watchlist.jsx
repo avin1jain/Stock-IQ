@@ -12,7 +12,7 @@ export default function Watchlist() {
 
   useEffect(() => {
     if (watchlist.length === 0) return;
-    Promise.all(watchlist.map(s => axios.get("http://localhost:8000/api/stocks/" + s).then(r => r.data)))
+    Promise.all(watchlist.map(s => axios.get("https://stockiq-backend-0mh0.onrender.com/api/stocks/" + s).then(r => r.data)))
       .then(setStocks).catch(() => {});
   }, [watchlist]);
 
@@ -20,7 +20,7 @@ export default function Watchlist() {
     if (!input.trim()) return;
     let sym = input.trim().toUpperCase();
     try {
-      const res = await axios.get("http://localhost:8000/api/search/" + input.trim());
+      const res = await axios.get("https://stockiq-backend-0mh0.onrender.com/api/search/" + input.trim());
       sym = res.data.symbol;
     } catch {}
     if (!watchlist.includes(sym)) {
