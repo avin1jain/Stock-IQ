@@ -102,7 +102,7 @@ SYMBOLS = {
     "dixon": "DIXON.NS",
 
     # Indian Fintech & New Age
-    "zomato": "ZOMATO.NS", "paytm": "PAYTM.NS",
+    "zomato": "ETERNAL.NS", "paytm": "PAYTM.NS", "eternal": "ETERNAL.NS", "eternal": "ETERNAL.NS", "eternal": "ETERNAL.NS",
     "nykaa": "NYKAA.NS", "policybazaar": "POLICYBZR.NS",
     "ola": "OLAELEC.NS", "ola electric": "OLAELEC.NS",
     "swiggy": "SWIGGY.NS",
